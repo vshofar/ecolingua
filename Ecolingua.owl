@@ -1,0 +1,1793 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    
+    xmlns="http://moemais.ufam.edu.br/apache2-default/arquivos/Ecolingua.owl#"    
+    xmlns:j.0="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://moemais.ufam.edu.br/apache2-default/arquivos/Ecolingua.owl">
+  <owl:Ontology rdf:about="">  
+    
+  </owl:Ontology>
+  <owl:Class rdf:ID="UnitOfTime">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasDimension"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <FundamentalDimension rdf:ID="time"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BasicUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitOfVolume">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >3.0</owl:hasValue>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasExpoent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DUnitByExponentiation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:valuesFrom>
+          <owl:Class rdf:ID="UnitOfLength"/>
+        </owl:valuesFrom>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UnitOfPowerOfLength"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecificRate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="UnitOfSpecificRate"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Não foi possível expressar na versão DL que o material relacionado a AbsoluteRate é o mesmo ao relacionado a SpecificRate, sendo esse fato apontado pela expressão de que AbsoluteRate deve ter um material relacionado.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasMaterial"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Example: Food consumption by an animal. Suppose measures of how much food the animal consumes are given in g/day. That would be the absolute rate of consumption. Now, the rate of food consumption in relation to the animal's weight be a specific rate.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasAbsoluteRate"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:valuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasMaterial"/>
+            </owl:onProperty>
+            <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</owl:cardinality>
+          </owl:Restriction>
+        </owl:valuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the Specific Rate class is for some processes which are measured in relation to a material  involved in process. </rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UnitOfSpecificRate"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TimeRelatedRateQty"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A unidade UnitOfSpecificRate não está presente na descrição original em FOL e foi criada especificamente para a classe.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ScaleOfMeasure">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MeasureData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Event">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Evento</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="When"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ContextualData"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#When"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Qualquer acontecimento de interesse ecológico com um tempo de duração (ex. estações).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitOfMeasure">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasureData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Operation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Operation rdf:ID="ad"/>
+          <Operation rdf:ID="sub"/>
+          <Operation rdf:ID="div"/>
+          <Operation rdf:ID="multi"/>
+          <Operation rdf:ID="exp"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MatematicalData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DUnitOfCDimension">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="CompositeDimension"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DerivedUnit"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AmountOfTime">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasEvent"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ImmaterialQty"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#UnitOfTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#UnitOfTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Um exemplo de quantidade imaterial:Tempo
+</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Quantia de Tempo</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CDimensionByMultiplication">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositeDimension"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#multi"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasOperation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSecondDim"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Material">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Qualquer coisa que tenha massa e que possa ser contida numa entidade ecológica. ex. (biomassa, substâncias químicas, madeira).</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Material</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContextualData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AmountOfMoney">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uma quantida de dinheiro. Um exemplo de quantida não física.
+</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Quantida de Dinheiro</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasEntity"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonPhysicalQty"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="UnitOfMoney"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UnitOfMoney"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RealNumber">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Number"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitByUnitMult">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSecondUnit"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DUnitByMultiplication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AmountQty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Quantity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Many quantities in ecology represent an amount of something contained(or how much )</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="FundamentalDimension">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Dimension"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Dimension">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasureData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CDimensionByDivision">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >não está explicitamente na dosumentação, mas está implicitamente ex. kg/s</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositeDimension"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:resource="#div"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondDim"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sign">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MatematicalData"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Sign rdf:ID="pos"/>
+          <Sign rdf:ID="neg"/>
+          <Sign rdf:ID="und">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >usado para representar indefinição.</rdfs:comment>
+          </Sign>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#MatematicalData">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MeasureData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfLength">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <FundamentalDimension rdf:ID="length"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BasicUnit"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfPowerOfLength"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AbsoluteRate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasEntityTo"/>
+        </owl:onProperty>
+        <owl:valuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="Contains"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Material"/>
+          </owl:Restriction>
+        </owl:valuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Absolute Rate Class is for measures of processes where an amount of some material is processed over time. These quantities have a composite dimension of mass, mass/length^n or money over the time dimension.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="UnitOfAbsoluteRate"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A unidade UnitOfAbsoluteRate não está presente na descrição original em FOL e foi criada especificamente para a classe.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TimeRelatedRateQty"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasMaterial"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Não foi possível expressar a direferença entre as duas entidades.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UnitOfAbsoluteRate"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:valuesFrom>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Material"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#Contains"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:valuesFrom>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasEntityFrom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfAbsoluteRate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfTime"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:ID="UnitOfMaterial"/>
+              <owl:Class rdf:about="#UnitOfMoney"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DUnitByDivision"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TimeRelatedRateQty">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Em geral, taxas expressão uma quantidade em relação a outra.
+Em ecologia, taxas normalmente se referem a medidas instantaneas de processos de movimento ou transformação de alguma coisa ocorrendo sobre o tempo.
+</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Taxas relacionadas ao tempo</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Quantity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DUnitByDivision">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondUnit"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#DUnitOfCDimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:resource="#div"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfPowerOfLength">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MixUnit"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#UnitOfLength"/>
+          <owl:Class rdf:ID="UnitOfArea"/>
+          <owl:Class rdf:about="#UnitOfVolume"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="CDimensionByExponentiation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositeDimension"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#exp"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasExp"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DUnitOfFDimension">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >O multiplicador, na versão FOL, é uma expressão matemática cuja resoluão é um número real positivo, porém na versão DL, ele ficou restrito há um número real.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasMultiplier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#FundamentalDimension"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#BasicUnit"/>
+              <owl:Class rdf:about="#DUnitOfFDimension"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DerivedUnit"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#multi"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfSpecificRate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="UnitOfMassDivision"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfTime"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#DUnitByDivision"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EcologicalEntity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContextualData"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Qualquer coisa distinta, natural ou artificial, com atributos de interesse em um sistema ecológico (ex. vegetação, água, um animal, um gripo de indivíduos ou população, maquinário), o sistema em si (ex. uma floresta, um lago), ou seus limites (ex. atmosfera).
+
+</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Entidade Ecológica</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitOfIdentity">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <UnitOfIdentity rdf:ID="one"/>
+        </owl:oneOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BasicUnit"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <FundamentalDimension rdf:ID="identity"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Percentage">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Food assimilation efficiency of a population, mortality and birth rates are examples of ecological quantities expressed as percentages.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NumberOf"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DimensionlessQty"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NumberOf">
+    <owl:disjointWith rdf:resource="#Percentage"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DimensionlessQty"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Number of Class aplies to quantities in ecology that represent counts of things.</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MaterialQty">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uma quantidade de algum Material, sou seja, uma amostra.
+A restrição "Contais" serve para indicar que é necessário que o Material e a Entidade relacionados a amostra devem ser compatíveis. Porém esse fato não pode ser totalmente expresso em OWL puro.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasMaterial"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:valuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#Contains"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Material"/>
+          </owl:Restriction>
+        </owl:valuesFrom>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasEntity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AmountQty"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#ImmaterialQty"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Constancy">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isQuantityTo"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Influence"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Quantity"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pode ser deduzido através de das quantidades que não participam de nenhum influencia.
+Pode ser melhor definido em swrl, porém, precisa de negação por falha.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ImmaterialQty">
+    <rdfs:subClassOf rdf:resource="#AmountQty"/>
+    <owl:disjointWith rdf:resource="#MaterialQty"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfMassDivision">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondUnit"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasDimension"/>
+            </owl:onProperty>
+            <owl:hasValue>
+              <FundamentalDimension rdf:ID="mass"/>
+            </owl:hasValue>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasDimension"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#mass"/>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#DUnitByDivision"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CompositeDimension">
+    <rdfs:subClassOf rdf:resource="#Dimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFirstDim"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitOfDistributedMass">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfPowerOfLength"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSecondUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="UnitOfMass"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#DUnitByDivision"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UnitOfMaterial"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DimensionlessQty">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Dimensionless Quantity is a class which have a physical dimension but it is the identity dimension, e.g, real numbers.</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasEntity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Quantity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#one"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WeigthOf">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#UnitOfMass"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WeightQty"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasEntity"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#UnitOfMass"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="TemperatureOf"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In ecology, as in many other contexts, people refer to 'weight' meaning a quantity of mass in fact as defined this class.</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#MixUnit">
+    <rdfs:subClassOf rdf:resource="#UnitOfMeasure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TemperatureQty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Quantity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfArea">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasExpoent"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+        >2.0</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfLength"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DUnitByExponentiation"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UnitOfPowerOfLength"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DUnitByExponentiation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasExp"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#DUnitOfCDimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:resource="#exp"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EcologicalData">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="Checado"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UnitByNumberMult">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasMultiplier"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DUnitByMultiplication"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#DUnitOfCDimension"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WeightQty">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Quantity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfMaterial">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#UnitOfDistributedMass"/>
+          <owl:Class rdf:about="#UnitOfMass"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#MixUnit"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Influence">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContextualData"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSign"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasQuantityFrom"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasQuantityTo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A classe Influence é uma relação na versão FOL que está sendo reificada na versão DL devido a necessidade de agrupar informação sobre 3 componentes, oque não poderia ser feito numa relação DL.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#DerivedUnit">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFirstUnit"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UnitOfMeasure"/>
+  </owl:Class>
+  <owl:Class rdf:about="#When">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A when T is any description that identifies a moment or period in time.</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContextualData"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfMass">
+    <owl:disjointWith rdf:resource="#UnitOfPowerOfLength"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:hasValue rdf:resource="#mass"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BasicUnit"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UnitOfMaterial"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AmountOfMaterial">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="MaterialDensity"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OBS: A relação contains é usada para amenizar uma perda de expressividade, apontando para a necessidade de compatibilidade entre a entidade e o material participantes da classe.</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OBS: Não foi possível  expressar de maneira concisa que o material e a entidade participantes da classe são compatíveis entre si como na versão FOL. Uma alternativa seria o uso de SWRL para expressar esse conhecimento, porém, a semântica de uma regra SWRL dentro de uma ontologia DL é usada necessariamente para dedução (restriction), diferente do uso em FOL onde ela pode ser usada tanto para dedução quanto para checagem (constraint).</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Uma quantidade de alguma Material cuja Unidade de Medida seja uma Unidade de Massa.        </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#MaterialQty"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#UnitOfMass"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfMass"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MaterialDensity">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Others quantities represent measurements of amount of material in relation to space. The dimension of such quantities is mass over some power of length.</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A unidade de Massa Distribuída não aparece explicitamente na versão FOL e foi criada na versão DL para expressar unidades de massa distribuída sobre alguma espécie de espaço.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#AmountOfMaterial"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#UnitOfDistributedMass"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MaterialQty"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#UnitOfDistributedMass"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NonPhysicalQty">
+    <rdfs:subClassOf rdf:resource="#AmountQty"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BasicUnit">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#FundamentalDimension"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UnitOfMeasure"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TemperatureOf">
+    <rdfs:subClassOf rdf:resource="#TemperatureQty"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ScaleOfTemperature"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasTemperatureScale"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasEntity"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ScaleOfTemperature"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasTemperatureScale"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#WeigthOf"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Another fundamental physical dimension is temperature, which has measurement scales rather units.</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#ContextualData">
+    <rdfs:subClassOf rdf:resource="#EcologicalData"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Define very general concepts of contextual data around the ecological quantities which form the greater part of the ontology</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Quantity">
+    <rdfs:subClassOf rdf:resource="#EcologicalData"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >types of quantities</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="NaturalNumber">
+    <rdfs:subClassOf rdf:resource="#RealNumber"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Number">
+    <rdfs:subClassOf rdf:resource="#MatematicalData"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MeasureData">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="#Checado"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#UnitOfMoney">
+    <rdfs:subClassOf rdf:resource="#BasicUnit"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+        <owl:hasValue>
+          <FundamentalDimension rdf:ID="money"/>
+        </owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DUnitByMultiplication">
+    <rdfs:subClassOf rdf:resource="#DUnitOfCDimension"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#multi"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ScaleOfTemperature">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:hasValue>
+          <FundamentalDimension rdf:ID="temperature"/>
+        </owl:hasValue>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDimension"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ScaleOfMeasure"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasEcologicalProperty">
+    <rdfs:range rdf:resource="#EcologicalData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasExp">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasNumber"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMaterial">
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:range rdf:resource="#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasTemperatureScale">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#ScaleOfTemperature"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isQuantityTo">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasQuantityTo"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Quantity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasFirstDim">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasDimension"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasQuantityFrom">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasQuantity"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasQuantityTo">
+    <owl:inverseOf rdf:resource="#isQuantityTo"/>
+    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasQuantity"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEntityFrom">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasEntity"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEntityTo">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasEntity"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSign">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Sign"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEntity">
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:range rdf:resource="#EcologicalEntity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAbsoluteRate">
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:range rdf:resource="#AbsoluteRate"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasQuantity">
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:range rdf:resource="#Quantity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSecondUnit">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasUnitOfMeasure"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCDBMult">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasDimension"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >não é usada na especificação das classes da ontologia, mas apenas para facilitar a inferência da dimensão de algumas unidades de medida.</rdfs:comment>
+    <rdfs:range rdf:resource="#CDimensionByMultiplication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasOperation">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Operation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasUnitOfMeasure">
+    <rdfs:range rdf:resource="#UnitOfMeasure"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMult">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasNumber"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#Contains">
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:domain rdf:resource="#EcologicalEntity"/>
+    <rdfs:range rdf:resource="#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasDimension">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Dimension"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasFirstUnit">
+    <rdfs:subPropertyOf rdf:resource="#hasUnitOfMeasure"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasNumber">
+    <rdfs:range rdf:resource="#Number"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMeasureProperty"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCDBExp">
+    <rdfs:subPropertyOf rdf:resource="#hasDimension"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >não é usada na especificação das classes da ontologia, mas apenas para facilitar a inferência da dimensão de algumas unidades de medida.</rdfs:comment>
+    <rdfs:range rdf:resource="#CDimensionByExponentiation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasTime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relação entre um Evento e o período de Tempo em que ele ocorre.
+</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+    <rdfs:range rdf:resource="#When"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMeasureProperty">
+    <rdfs:range rdf:resource="#MeasureData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasEvent">
+    <rdfs:range rdf:resource="#Event"/>
+    <rdfs:subPropertyOf rdf:resource="#hasEcologicalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasCDBDiv">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >não é usada na especificação das classes da ontologia, mas apenas para facilitar a inferência da dimensão de algumas unidades de medida.</rdfs:comment>
+    <rdfs:range rdf:resource="#CDimensionByDivision"/>
+    <rdfs:subPropertyOf rdf:resource="#hasDimension"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasSecondDim">
+    <rdfs:subPropertyOf rdf:resource="#hasDimension"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#hasExpoent">
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:ID="hasNum"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasNum">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isChecked">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasMultiplier">
+    <rdfs:subPropertyOf rdf:resource="#hasNum"/>
+  </owl:DatatypeProperty> 
+  
+  <owl:Thing rdf:ID="nao"/>
+  
+  <Influence rdf:ID="R_ifw_e">
+    <hasQuantityFrom>
+      <WeigthOf rdf:ID="indiv_fish_weight">
+        <hasUnitOfMeasure>
+          <UnitOfMass rdf:ID="kilograma"/>
+        </hasUnitOfMeasure>
+        <hasEntity>
+          <EcologicalEntity rdf:ID="indiv_fish"/>
+        </hasEntity>
+        <isQuantityTo>
+          <Influence rdf:ID="R_fb_ifw">
+            <hasSign rdf:resource="#und"/>
+            <hasQuantityFrom>
+              <MaterialDensity rdf:ID="fish_biomass">
+                <hasMaterial>
+                  <Material rdf:ID="biomass"/>
+                </hasMaterial>
+                <hasEntity>
+                  <EcologicalEntity rdf:ID="fish">
+                    <Contains rdf:resource="#biomass"/>
+                  </EcologicalEntity>
+                </hasEntity>
+                <isQuantityTo>
+                  <Influence rdf:ID="R_c_fb">
+                    <hasQuantityFrom>
+                      <AbsoluteRate rdf:ID="consumption">
+                        <hasUnitOfMeasure>
+                          <UnitOfAbsoluteRate rdf:ID="kg_div_ha_div_day">
+                            <hasFirstUnit>
+                              <UnitOfDistributedMass rdf:ID="kg_div_ha">
+                                <hasSecondUnit>
+                                  <UnitByNumberMult rdf:ID="hectare">
+                                    <hasMultiplier rdf:datatype=
+                                    "http://www.w3.org/2001/XMLSchema#float"
+                                    >10000.0</hasMultiplier>
+                                    <hasFirstUnit>
+                                      <UnitOfArea rdf:ID="m2">
+                                        <hasFirstUnit>
+                                          <UnitOfLength rdf:ID="meter"/>
+                                        </hasFirstUnit>
+                                      </UnitOfArea>
+                                    </hasFirstUnit>
+                                    <hasMult>
+                                      <NaturalNumber rdf:ID="_10.000"/>
+                                    </hasMult>
+                                  </UnitByNumberMult>
+                                </hasSecondUnit>
+                                <hasFirstUnit rdf:resource="#kilograma"/>
+                              </UnitOfDistributedMass>
+                            </hasFirstUnit>
+                            <hasSecondUnit>
+                              <UnitOfTime rdf:ID="day"/>
+                            </hasSecondUnit>
+                          </UnitOfAbsoluteRate>
+                        </hasUnitOfMeasure>
+                        <hasMaterial rdf:resource="#biomass"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_apb_c">
+                            <hasQuantityFrom>
+                              <MaterialDensity rdf:ID="aquatic_plants_biomass">
+                                <hasUnitOfMeasure rdf:resource="#kg_div_ha"/>
+                                <isQuantityTo>
+                                  <Influence rdf:ID="R_pp_apb">
+                                    <hasQuantityFrom>
+                                      <AbsoluteRate rdf:ID="plant_production">
+                                        <hasEntityTo>
+                                          <EcologicalEntity rdf:ID="aquatic_plants">
+                                            <Contains rdf:resource="#biomass"/>
+                                          </EcologicalEntity>
+                                        </hasEntityTo>
+                                        <hasEntityFrom>
+                                          <EcologicalEntity rdf:ID="outside"/>
+                                        </hasEntityFrom>
+                                        <hasMaterial rdf:resource="#biomass"/>
+                                        <isQuantityTo>
+                                          <Influence rdf:ID="R_apb_pp">
+                                            <hasQuantityFrom rdf:resource="#aquatic_plants_biomass"/>
+                                            <hasQuantityTo rdf:resource="#plant_production"/>
+                                            <hasSign rdf:resource="#und"/>
+                                          </Influence>
+                                        </isQuantityTo>
+                                        <isQuantityTo>
+                                          <Influence rdf:ID="R_wt_pp">
+                                            <hasQuantityTo rdf:resource="#plant_production"/>
+                                            <hasSign rdf:resource="#und"/>
+                                            <hasQuantityFrom>
+                                              <TemperatureOf rdf:ID="water_temp">
+                                                <hasTemperatureScale>
+                                                  <ScaleOfTemperature rdf:ID="celsius"/>
+                                                </hasTemperatureScale>
+                                                <hasEntity>
+                                                  <EcologicalEntity rdf:ID="water"/>
+                                                </hasEntity>
+                                              </TemperatureOf>
+                                            </hasQuantityFrom>
+                                          </Influence>
+                                        </isQuantityTo>
+                                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                                      </AbsoluteRate>
+                                    </hasQuantityFrom>
+                                    <hasQuantityTo rdf:resource="#aquatic_plants_biomass"/>
+                                    <hasSign rdf:resource="#pos"/>
+                                  </Influence>
+                                </isQuantityTo>
+                                <isQuantityTo>
+                                  <Influence rdf:ID="R_pnm_apb">
+                                    <hasSign rdf:resource="#neg"/>
+                                    <hasQuantityFrom>
+                                      <AbsoluteRate rdf:ID="plant_nat_mortality">
+                                        <hasEntityFrom rdf:resource="#aquatic_plants"/>
+                                        <hasMaterial rdf:resource="#biomass"/>
+                                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                                        <isQuantityTo>
+                                          <Influence rdf:ID="R_apb_pnm">
+                                            <hasQuantityTo rdf:resource="#plant_nat_mortality"/>
+                                            <hasQuantityFrom rdf:resource="#aquatic_plants_biomass"/>
+                                            <hasSign rdf:resource="#und"/>
+                                          </Influence>
+                                        </isQuantityTo>
+                                        <hasEntityTo rdf:resource="#outside"/>
+                                      </AbsoluteRate>
+                                    </hasQuantityFrom>
+                                    <hasQuantityTo rdf:resource="#aquatic_plants_biomass"/>
+                                  </Influence>
+                                </isQuantityTo>
+                                <isQuantityTo>
+                                  <Influence rdf:ID="R_c_apb">
+                                    <hasSign rdf:resource="#neg"/>
+                                    <hasQuantityTo rdf:resource="#aquatic_plants_biomass"/>
+                                    <hasQuantityFrom rdf:resource="#consumption"/>
+                                  </Influence>
+                                </isQuantityTo>
+                                <hasMaterial rdf:resource="#biomass"/>
+                                <hasEntity rdf:resource="#aquatic_plants"/>
+                              </MaterialDensity>
+                            </hasQuantityFrom>
+                            <hasQuantityTo rdf:resource="#consumption"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_fb_c">
+                            <hasQuantityFrom rdf:resource="#fish_biomass"/>
+                            <hasQuantityTo rdf:resource="#consumption"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_ifw_c">
+                            <hasQuantityFrom rdf:resource="#indiv_fish_weight"/>
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityTo rdf:resource="#consumption"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_wt_c">
+                            <hasQuantityTo rdf:resource="#consumption"/>
+                            <hasQuantityFrom rdf:resource="#water_temp"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <hasEntityFrom rdf:resource="#aquatic_plants"/>
+                        <hasEntityTo rdf:resource="#fish"/>
+                      </AbsoluteRate>
+                    </hasQuantityFrom>
+                    <hasSign rdf:resource="#pos"/>
+                    <hasQuantityTo rdf:resource="#fish_biomass"/>
+                  </Influence>
+                </isQuantityTo>
+                <isQuantityTo>
+                  <Influence rdf:ID="R_r_fb">
+                    <hasSign rdf:resource="#neg"/>
+                    <hasQuantityTo rdf:resource="#fish_biomass"/>
+                    <hasQuantityFrom>
+                      <AbsoluteRate rdf:ID="respiration">
+                        <hasEntityTo rdf:resource="#outside"/>
+                        <hasMaterial rdf:resource="#biomass"/>
+                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                        <hasEntityFrom rdf:resource="#fish"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_ifw_r">
+                            <hasQuantityTo rdf:resource="#respiration"/>
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityFrom rdf:resource="#indiv_fish_weight"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_wt_r">
+                            <hasQuantityFrom rdf:resource="#water_temp"/>
+                            <hasQuantityTo rdf:resource="#respiration"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_fb_r">
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityTo rdf:resource="#respiration"/>
+                            <hasQuantityFrom rdf:resource="#fish_biomass"/>
+                          </Influence>
+                        </isQuantityTo>
+                      </AbsoluteRate>
+                    </hasQuantityFrom>
+                  </Influence>
+                </isQuantityTo>
+                <isQuantityTo>
+                  <Influence rdf:ID="R_e_fb">
+                    <hasSign rdf:resource="#neg"/>
+                    <hasQuantityTo rdf:resource="#fish_biomass"/>
+                    <hasQuantityFrom>
+                      <AbsoluteRate rdf:ID="excretion">
+                        <hasEntityFrom rdf:resource="#fish"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_fb_e">
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityFrom rdf:resource="#fish_biomass"/>
+                            <hasQuantityTo rdf:resource="#excretion"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo rdf:resource="#R_ifw_e"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_wt_e">
+                            <hasQuantityTo rdf:resource="#excretion"/>
+                            <hasQuantityFrom rdf:resource="#water_temp"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_fae_e">
+                            <hasQuantityTo rdf:resource="#excretion"/>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <hasEntityTo rdf:resource="#outside"/>
+                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                        <hasMaterial rdf:resource="#biomass"/>
+                      </AbsoluteRate>
+                    </hasQuantityFrom>
+                  </Influence>
+                </isQuantityTo>
+                <isQuantityTo>
+                  <Influence rdf:ID="R_s_fb">
+                    <hasSign rdf:resource="#pos"/>
+                    <hasQuantityFrom>
+                      <AbsoluteRate rdf:ID="stocking">
+                        <hasEntityFrom rdf:resource="#outside"/>
+                        <hasEntityTo rdf:resource="#fish"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_nfs_s">
+                            <hasQuantityTo rdf:resource="#stocking"/>
+                            <hasQuantityFrom>
+                              <NumberOf rdf:ID="number_fish_stocked">
+                                <rdf:type rdf:resource="#Constancy"/>
+                                <hasEntity>
+                                  <EcologicalEntity rdf:ID="fish_stocked"/>
+                                </hasEntity>
+                              </NumberOf>
+                            </hasQuantityFrom>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <hasMaterial rdf:resource="#biomass"/>
+                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                        <rdf:type rdf:resource="#Event"/>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_sd_s">
+                            <hasQuantityTo rdf:resource="#stocking"/>
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityFrom>
+                              <When rdf:ID="stocking_date">
+                                <rdf:type rdf:resource="#Constancy"/>
+                              </When>
+                            </hasQuantityFrom>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_iifw_s">
+                            <hasQuantityTo rdf:resource="#stocking"/>
+                            <hasQuantityFrom>
+                              <WeigthOf rdf:ID="init_indiv_fish_weight">
+                                <hasEntity rdf:resource="#fish"/>
+                                <hasUnitOfMeasure rdf:resource="#kilograma"/>
+                                <rdf:type rdf:resource="#Constancy"/>
+                              </WeigthOf>
+                            </hasQuantityFrom>
+                            <hasSign rdf:resource="#und"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <hasTime rdf:resource="#stocking_date"/>
+                      </AbsoluteRate>
+                    </hasQuantityFrom>
+                    <hasQuantityTo rdf:resource="#fish_biomass"/>
+                  </Influence>
+                </isQuantityTo>
+                <isQuantityTo>
+                  <Influence rdf:ID="R_h_fb">
+                    <hasQuantityTo rdf:resource="#fish_biomass"/>
+                    <hasQuantityFrom>
+                      <AbsoluteRate rdf:ID="harvest">
+                        <rdf:type rdf:resource="#Event"/>
+                        <hasUnitOfMeasure rdf:resource="#kg_div_ha_div_day"/>
+                        <hasEntityTo>
+                          <EcologicalEntity rdf:ID="harv_fish"/>
+                        </hasEntityTo>
+                        <hasEntityFrom rdf:resource="#fish"/>
+                        <hasTime>
+                          <When rdf:ID="harvest_date">
+                            <rdf:type rdf:resource="#Constancy"/>
+                          </When>
+                        </hasTime>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_fb_h">
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityFrom rdf:resource="#fish_biomass"/>
+                            <hasQuantityTo rdf:resource="#harvest"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <isQuantityTo>
+                          <Influence rdf:ID="R_hd_h">
+                            <hasSign rdf:resource="#und"/>
+                            <hasQuantityTo rdf:resource="#harvest"/>
+                            <hasQuantityFrom rdf:resource="#harvest_date"/>
+                          </Influence>
+                        </isQuantityTo>
+                        <hasMaterial rdf:resource="#biomass"/>
+                      </AbsoluteRate>
+                    </hasQuantityFrom>
+                    <hasSign rdf:resource="#neg"/>
+                  </Influence>
+                </isQuantityTo>
+                <hasUnitOfMeasure rdf:resource="#kg_div_ha"/>
+              </MaterialDensity>
+            </hasQuantityFrom>
+            <hasQuantityTo rdf:resource="#indiv_fish_weight"/>
+          </Influence>
+        </isQuantityTo>
+        <isQuantityTo>
+          <Influence rdf:ID="R_nfs_ifw">
+            <hasSign rdf:resource="#und"/>
+            <hasQuantityTo rdf:resource="#indiv_fish_weight"/>
+            <hasQuantityFrom rdf:resource="#number_fish_stocked"/>
+          </Influence>
+        </isQuantityTo>
+      </WeigthOf>
+    </hasQuantityFrom>
+    <hasQuantityTo rdf:resource="#excretion"/>
+    <hasSign rdf:resource="#und"/>
+  </Influence>
+  <Influence rdf:ID="R_wt_ppr">
+    <hasQuantityFrom rdf:resource="#water_temp"/>
+    <hasSign rdf:resource="#und"/>
+    <hasQuantityTo>
+      <SpecificRate rdf:ID="plant_production_rate">
+        <hasUnitOfMeasure>
+          <UnitOfSpecificRate rdf:ID="g_div_kg_div_day">
+            <hasSecondUnit rdf:resource="#day"/>
+            <hasFirstUnit>
+              <UnitOfMassDivision rdf:ID="g_div_kg">
+                <hasSecondUnit rdf:resource="#kilograma"/>
+                <hasFirstUnit>
+                  <DUnitOfFDimension rdf:ID="grama">
+                    <hasMult>
+                      <RealNumber rdf:ID="_0.001"/>
+                    </hasMult>
+                    <hasFirstUnit rdf:resource="#kilograma"/>
+                    <hasMultiplier rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                    >0.0010</hasMultiplier>
+                  </DUnitOfFDimension>
+                </hasFirstUnit>
+              </UnitOfMassDivision>
+            </hasFirstUnit>
+          </UnitOfSpecificRate>
+        </hasUnitOfMeasure>
+        <isQuantityTo rdf:resource="#R_wt_ppr"/>
+        <hasMaterial rdf:resource="#biomass"/>
+        <hasAbsoluteRate rdf:resource="#plant_production"/>
+      </SpecificRate>
+    </hasQuantityTo>
+  </Influence>
+  <UnitOfMassDivision rdf:ID="kg_div_kg">
+    <hasFirstUnit rdf:resource="#kilograma"/>
+    <hasSecondUnit rdf:resource="#kilograma"/>
+  </UnitOfMassDivision>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->
